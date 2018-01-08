@@ -1,0 +1,6 @@
+{
+    "template": "\n  <table class=\"table\"> <span style=\"color: orange;\">Precipitazioni previste OGGI</span>  \n \n \n <tr>\n    <td>Pioggia:</td>\n    <td><strong><span>{{itemValue('Rain')}} mm/h</span></strong></td>\n  </tr>\n  <tr>\n    <td>Neve:</td>\n    <td><strong><span>{{itemValue('Snow')}} mm/h</span></strong></td>\n  </tr>  \n  <tr>\n    <td>Probabilità Precipitazioni:</td>\n    <td><strong><span>{{itemValue('Precip_Probability')}} %</span></strong></td>\n  </tr>  \n  <tr>\n    <td>Precipitazioni:</td>\n    <td><strong><span>{{itemValue('Precip_Total')}} mm</span></strong></td>\n  </tr> \n    \t</table>",
+    "name": "Precipitazioni_OGGI",
+    "author": "Massimiliano",
+    "description": "Precipitazioni_OGGI"
+}

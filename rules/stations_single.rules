@@ -1,0 +1,153 @@
+rule "Stations01 OFF"
+when
+    Item Stazione01_S changed from ON to OFF
+then
+    sendTelegram("bot2", "La stazione 01 è andata in OFF")
+
+end
+
+rule "Stations01 ON"
+when
+	Item Stazione01_S changed from OFF to ON
+then 
+	sendTelegram("bot2", "La stazione 01 è andata in ON")
+end
+
+rule "Stations02 OFF"
+when
+	Item Stazione02_S changed from ON to OFF
+then
+	sendTelegram("bot2", "La stazione 02 è andata in OFF")
+end
+
+rule "Stations02 ON"
+when
+	Item Stazione02_S changed from OFF to ON
+then
+	sendTelegram("bot2", "La stazione 02 è andata in ON")
+end
+
+rule "Stations03 OFF"
+when
+	Item Stazione03_S changed from ON to OFF
+then
+	sendTelegram("bot2", "La stazione 03 è andata in OFF")
+end
+
+rule "Stations03 ON"
+when
+	Item Stazione03_S changed from OFF to ON
+then
+	sendTelegram("bot2", "La stazione 03 è andata in ON")
+end
+
+rule "Stations04 OFF"
+when
+	Item Stazione04_S changed from ON to OFF
+then
+	sendTelegram("bot2", "La stazione 04 è andata in OFF")
+end
+
+rule "Stations04 ON"
+when
+	Item Stazione04_S changed from OFF to ON
+
+then
+	sendTelegram("bot2", "La stazione 04 è andata in ON")
+end
+
+rule "Stations05 OFF"
+when
+	Item Stazione05_S changed from ON to OFF
+then
+	sendTelegram("bot2", "La stazione 05 è andata in OFF")
+end
+
+rule "Stations05 ON"
+when
+	Item Stazione05_S changed from OFF to ON
+
+then
+	sendTelegram("bot2", "La stazione 05 è andata in ON")
+end
+
+
+rule "Stations06 OFF"
+when
+	Item Stazione06_S changed from ON to OFF
+then
+	sendTelegram("bot2", "La stazione 06 è andata in OFF")
+end
+
+rule "Stations06 ON"
+when
+	Item Stazione06_S changed from OFF to ON
+
+then
+	sendTelegram("bot2", "La stazione 06 è andata in ON")
+	
+end
+
+rule "Stations07 OFF"
+when
+	Item Stazione07_S changed from ON to OFF
+then
+	sendTelegram("bot2", "La stazione 07 è andata in OFF")
+end
+
+rule "Stations07 ON"
+when
+	Item Stazione07_S changed from OFF to ON
+
+then
+	sendTelegram("bot2", "La stazione 07 è andata in ON")
+	
+end
+
+rule "Stations08 OFF"
+when
+	Item Stazione08_S changed from ON to OFF
+then
+	sendTelegram("bot2", "La stazione 08 è andata in OFF")
+end
+
+rule "Stations08 ON"
+when
+	Item Stazione08_S changed from OFF to ON
+
+then
+	sendTelegram("bot2", "La stazione 08 è andata in ON")
+	
+end
+
+rule "Stations09 OFF"
+when
+	Item Stazione09_S changed from ON to OFF
+then
+	sendTelegram("bot2", "La stazione 09 è andata in OFF")
+end
+
+rule "Stations09 ON"
+when
+	Item Stazione09_S changed from OFF to ON
+
+then
+	sendTelegram("bot2", "La stazione 09 è andata in ON")
+	
+end
+
+rule "Stations10 OFF"
+when
+	Item Stazione10_S changed from ON to OFF
+then
+	sendTelegram("bot2", "La stazione 10 è andata in OFF")
+end
+
+rule "Stations10 ON"
+when
+	Item Stazione10_S changed from OFF to ON
+
+then
+	sendTelegram("bot2", "La stazione 10 è andata in ON")
+	
+end

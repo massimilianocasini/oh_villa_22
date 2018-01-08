@@ -1,0 +1,13 @@
+rule "MySky OK"
+when
+    Item MySkyStatus changed from OFF to ON
+then
+    sendTelegram("bot1", "MySky ONLINE!")
+end
+
+rule "MySky KO"
+when
+    Item MySkyStatus changed from ON to OFF
+then
+    sendTelegram("bot1", "MySky OFFLINE!")
+end

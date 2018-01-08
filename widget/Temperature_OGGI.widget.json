@@ -1,0 +1,6 @@
+{
+    "template": "\n  <table class=\"table\"><span style=\"color: orange;\">Temperatura</span> \n  <tr>\n    <td>Temperatura:</td>\n    <td><strong><span>{{itemValue('Temperature')}} °C</span></strong></td>\n  </tr>   \n  <tr>\n    <td>Temperatura percepita:</td>\n    <td><strong><span>{{itemValue('Temp_Feel')}} °C</span></strong></td>\n  </tr>     \n  <tr>\n    <td>Punto di rugiada:</td>\n    <td><strong><span>{{itemValue('Temp_Dewpoint')}} °C</span></strong></td>\n  </tr>    \n  <tr>\n    <td>Temperatura Min-Max:</td>\n    <td><strong><span>{{itemValue('Temp_MinMax')}} °C</span></strong></td>\n  </tr>      \n</table>\n\n\n\n\n\n\n\n\n",
+    "name": "Temperature_OGGI",
+    "description": "Temperature_OGGI",
+    "author": "Massimiliano"
+}

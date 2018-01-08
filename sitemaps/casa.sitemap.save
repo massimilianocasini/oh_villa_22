@@ -1,0 +1,140 @@
+sitemap casa label="Benvenuto a Casatenovo" {
+	
+	Frame label="Meteo" 
+			{
+			Text item=Station_Name icon=sun 
+				{
+				Text item=Station_Name valuecolor=["orange"]
+				Text item=Station_Id valuecolor=["black"]
+				Text item=Sunrise_Time label=Alba valuecolor=[>1="black"]
+				Text item=Sunset_Time label=Tramonto valuecolor=[>1="black"]
+				Text item=Station_Latitude valuecolor=[>1="black"]
+				Text item=Station_Longitude valuecolor=[>1="black"]
+				Text item=OpenRoma_TemperaturaCurr label="Temperatura attuale" valuecolor=[>25="orange",>15="green",>5="orange",<=5="blue"]
+				{
+					Switch item=Graph_Weather_Temperature label="Chart Period" mappings=[0="Hour", 1="8 Hours", 2="Day", 3="Week"]
+					Chart item=OpenRoma_TemperaturaCurr period=h refresh=300000 visibility=[Graph_Weather_Temperature==0, Graph_Weather_Temperature=="Uninitialized"]
+					Chart item=OpenRoma_TemperaturaCurr period=8h refresh=300000 visibility=[Graph_Weather_Temperature==1]
+					Chart item=OpenRoma_TemperaturaCurr period=D refresh=300000 visibility=[Graph_Weather_Temperature==2]
+					Chart item=OpenRoma_TemperaturaCurr period=W refresh=300000 visibility=[Graph_Weather_Temperature==3]
+					Chart item=OpenRoma_TemperaturaCurr period=M refresh=300000 visibility=[Graph_Weather_Temperature==3]
+					Chart item=OpenRoma_TemperaturaCurr period=2M refresh=300000 visibility=[Graph_Weather_Temperature==3]
+					Chart item=OpenRoma_TemperaturaCurr period=Y refresh=300000 visibility=[Graph_Weather_Temperature==3]
+	    		}
+				Text item=OpenRoma_TemperaturaMinF1  valuecolor=[>25="orange",>15="green",>5="orange",<=5="blue"]
+				Text item=OpenRoma_TemperaturaMaxF1  valuecolor=[>25="orange",>15="green",>5="orange",<=5="blue"]
+				Text item=OpenRoma_TemperaturaMinMaxF1
+				Text item=OpenRoma_Umidita 
+				Text item=OpenRoma_Pressione
+				{
+					Switch item=Graph_Weather_Pressure label="Chart Period" mappings=[0="Hour", 1="8 Hours", 2="Day", 3="Week"]
+					Chart item=OpenRoma_Pressione period=h refresh=300000 visibility=[Graph_Weather_Pressure==0, Graph_Weather_Pressure=="Uninitialized"]
+					Chart item=OpenRoma_Pressione period=8h refresh=300000 visibility=[Graph_Weather_Pressure==1]
+					Chart item=OpenRoma_Pressione period=D refresh=300000 visibility=[Graph_Weather_Pressure==2]
+					Chart item=OpenRoma_Pressione period=W refresh=300000 visibility=[Graph_Weather_Pressure==3]
+					Chart item=OpenRoma_Pressione period=M refresh=300000 visibility=[Graph_Weather_Temperature==3]
+					Chart item=OpenRoma_Pressione period=2M refresh=300000 visibility=[Graph_Weather_Temperature==3]
+					Chart item=OpenRoma_Pressione period=Y refresh=300000 visibility=[Graph_Weather_Temperature==3]				
+				}
+				Text item=OpenRoma_PressioneTrend 
+			}
+	}
+
+    Frame label="Piano Terra" 
+    {
+		Text item=avgTemperatura valuecolor=[>25="orange",>15="green",>5="orange",<=5="blue"]
+		Text item=avgVolumetrico 
+		Text item=avgLuminosita 
+		Text item=avgBatteria 
+		Text item=sumPotenza
+		Text item=sumEnergia
+		Switch item=avgPresa icon="switch" mappings=[OFF="All Off", ON="All On"]
+	}  
+								
+	Frame label="Studio" 
+	{
+		Text label="Studio" icon=office
+		
+		}
+	Frame label="Bagno" icon=toilet
+	{
+		Text label="Bagno" icon=toilet
+		{
+			Text item=MotionSensor1_PT_Temperatura	label="Temperatura" valuecolor=[>25="orange",>15="green",>5="orange",<=5="blue"] 
+			{
+				Switch item=Graph_MotionSensor1_PT_Temperatura label="Grafico Temperatura" mappings=[0=Hour, 1=8Hours, 2=Day, 3=Week]
+				Chart item=MotionSensor1_PT_Temperatura period=h refresh=60000 visibility=[Graph_MotionSensor1_PT_Temperatura==0, Graph_MotionSensor1_PT_Temperatura=="Uninitialized"]
+				Chart item=MotionSensor1_PT_Temperatura period=4h refresh=60000 visibility=[Graph_MotionSensor1_PT_Temperatura==1]
+				Chart item=MotionSensor1_PT_Temperatura period=8h refresh=60000 visibility=[Graph_MotionSensor1_PT_Temperatura==2]
+				Chart item=MotionSensor1_PT_Temperatura period=D refresh=60000 visibility=[Graph_MotionSensor1_PT_Temperatura==3]
+				Chart item=MotionSensor1_PT_Temperatura period=W refresh=60000 visibility=[Graph_MotionSensor1_PT_Temperatura==3]
+				Chart item=MotionSensor1_PT_Temperatura period=M refresh=60000 visibility=[Graph_MotionSensor1_PT_Temperatura==3]
+				Chart item=MotionSensor1_PT_Temperatura period=Y refresh=60000 visibility=[Graph_MotionSensor1_PT_Temperatura==3]		
+			}
+			Text item=MotionSensor1_PT_Luminosita labelcolor=[MotionSensor_PT_Luminosita<=10="blu",>10="red"] 
+			{
+				Switch item=Graph_MotionSensor1_PT_Luminosita label="Grafico Luminosità" mappings=[0=Hour, 1=Day, 2=Week]
+				Chart item=MotionSensor1_PT_Luminosita period=h refresh=60000 visibility=[Graph_MotionSensor1_PT_Luminosita==0, Graph_MotionSensor1_PT_Luminosita=="Uninitialized"]
+				Chart item=MotionSensor1_PT_Luminosita period=D refresh=60000 visibility=[Graph_MotionSensor1_PT_Luminosita==1]
+				Chart item=MotionSensor1_PT_Luminosita period=W refresh=60000 visibility=[Graph_MotionSensor1_PT_Luminosita==2]
+			}
+		Text item=MotionSensor1_PT_Volumetrico				
+		Text item=MotionSensor1_PT_Tamper				
+		Text item=MotionSensor1_PT_Batteria
+		Text item=WallPlug1_PT_Potenza label="Caldobagno potenza istantanea assorbita (W)" icon=fan_box
+			{
+				Switch item=Graph_WallPlug1_PT_Potenza  label="Grafico potenza assorbita" mappings=[0=Hour, 1=Day, 2=Week]
+				Chart item=WallPlug1_PT_Potenza period=h refresh=60000 visibility=[WallPlug1_PT_Potenza==0, Graph_WallPlug1_PT_Potenza=="Uninitialized"]
+				Chart item=WallPlug1_PT_Potenza period=D refresh=60000 visibility=[WallPlug1_PT_Potenza==1]
+				Chart item=WallPlug1_PT_Potenza period=W refresh=60000 visibility=[WallPlug1_PT_Potenza==2]
+			}
+		
+		Text item=WallPlug1_PT_Energia	label="Caldobagno energia totale assorbita (KWh)" icon=fan_box
+		Switch item=WallPlug1_PT_Presa label="Stato Caldobagno" icon=poweroutlet
+
+		}
+	}
+		
+	Frame label="Soggiorno" 
+	{
+		Text label="Soggiorno" icon=sofa 
+		{
+			Switch item=MySkyStatus	mappings=[ON="Presente", OFF="Non connesso"]
+			Text item=MySkyPingTime
+		}
+	}
+		
+	Frame label="Souliss" icon=light 
+	{
+			Text item=gSouliss icon=light 
+			{
+				Switch item=RiscaAuto mappings=[ON="Locale", OFF="Remoto"]
+				Switch item=SoulissIn1_0	mappings=[ON="ON", OFF="OFF"]
+				Switch item=SoulissIn2_0	mappings=[ON="Termostato ON", OFF="Termostato OFF"]
+				Switch item=SoulissIn3_0	mappings=[ON="ON", OFF="OFF"]
+				Switch item=SoulissIn4_0	mappings=[ON="ON", OFF="OFF"]
+				//Switch item=SoulissRele1	mappings=[ON="ON", OFF="OFF"]
+				Text item=SoulissRele1_0
+				Switch item=SoulissRele2_0	mappings=[ON="ON", OFF="OFF"]
+				Switch item=SoulissRele3_0	mappings=[ON="ON", OFF="OFF"]
+				Switch item=SoulissRele4_0	mappings=[ON="ON", OFF="OFF"]
+				Text item=SoulissUmidity_0
+				Text item=SoulissTemperature_0
+				Setpoint item=SetPoint1 minValue=1 maxValue=30 step=0.5
+				Switch item=SoulissStatus_0	mappings=[ON="Presente", OFF="Non connesso"]
+				Text item=SoulissPingTime_0
+				Text item=HEALTHNodo0 
+				Text item=TIMESTAMP_Nodo0		
+				
+				Switch item=SoulissIn1_1	mappings=[ON="ON", OFF="OFF"]
+				Switch item=SoulissRele1_1	mappings=[ON="ON", OFF="OFF"]
+				Text item=SoulissUmidity_1
+				Text item=SoulissTemperature_1
+				Switch item=SoulissStatus_1	mappings=[ON="Presente", OFF="Non connesso"]
+				Text item=SoulissPingTime_1
+				Text item=HEALTHNodo1 
+				Text item=TIMESTAMP_Nodo1	
+			}
+	}
+		
+}

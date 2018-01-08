@@ -1,0 +1,16 @@
+rule "Stations ON OFF"
+when
+    Item gStations changed
+then
+Thread::sleep(100) // give persistence time to catch up
+
+    // Acquire the door that triggered the rule by:
+    // - use filter remove the Contacts that are not saved to persitence yet (i.e. lastUpdate returns null)
+    // - use sortBy to order the members by lastUpdate, the most recent will be last
+    // - get the last updated Item, Contacts are unlikely to change within 100 msec of each other so this approach works
+    //   If they are likely to change that close together this approach will fail
+
+    val Station = gStations.members.filter[s|s.lastUpdate("mapdb") != null].sortBy[lastUpdate("mapdb")].last as StationItem
+
+    sendTelegram("bot1", "La stazione %s ha cambiato stato", Station)
+end

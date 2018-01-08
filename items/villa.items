@@ -1,0 +1,56 @@
+Group 	All
+Group 	Status
+Group 	gGiardino 								"Giardino"																	(All)
+Group 	gStations 								"Stazioni" 														  			(All, gGiardino)
+Group	  gNetwork								"Elementi di rete"															(All)
+
+Group:Number:AVG avgTemperatura 				"Temperatura media [%.1f °C]" 								<temperature>		(Status)
+
+
+Number Stazione01 "Stazione 1" (gStations, gGiardino)		{channel="opensprinkler:http:1:station01"}
+Switch Stazione01_S "Stazione 1 switch"                 {channel="opensprinkler:http:1:station01"}
+
+Number Stazione02 "Stazione 2" (gStations, gGiardino)		{channel="opensprinkler:http:1:station02"}
+Switch Stazione02_S "Stazione 3 switch"                 {channel="opensprinkler:http:1:station02"}
+
+
+Number Stazione03 "Stazione 3" (gStations, gGiardino)		{channel="opensprinkler:http:1:station03"}
+Switch Stazione03_S "Stazione 3 switch"                 {channel="opensprinkler:http:1:station03"}
+
+Number Stazione04 "Stazione 4" (gStations, gGiardino)		{channel="opensprinkler:http:1:station04"}
+Switch Stazione04_S "Stazione 4 switch"                 {channel="opensprinkler:http:1:station04"}
+
+Number Stazione05 "Stazione 5" (gStations, gGiardino)		{channel="opensprinkler:http:1:station05"}
+Switch Stazione05_S "Stazione 5 switch"                 {channel="opensprinkler:http:1:station05"}
+
+Number Stazione06 "Stazione 6" (gStations, gGiardino)		{channel="opensprinkler:http:1:station06"}
+Switch Stazione06_S "Stazione 6 switch"                 {channel="opensprinkler:http:1:station06"}
+
+Number Stazione07 "Stazione 7" (gStations, gGiardino)		{channel="opensprinkler:http:1:station07"}
+Switch Stazione07_S "Stazione 7 switch"                 {channel="opensprinkler:http:1:station07"}
+
+Number Stazione08 "Stazione 8" (gStations, gGiardino)		{channel="opensprinkler:http:1:station08"}
+Switch Stazione08_S "Stazione 8 switch"                 {channel="opensprinkler:http:1:station08"}
+
+
+Number Stazione09 "Stazione 9" (gStations, gGiardino)		{channel="opensprinkler:http:1:station09"}
+Switch Stazione09_S "Stazione 9 switch"                 {channel="opensprinkler:http:1:station09"}
+
+Number Stazione10 "Stazione 10" (gStations, gGiardino)		{channel="opensprinkler:http:1:station10"}
+Switch Stazione10_S "Stazione 10 switch"                   {channel="opensprinkler:http:1:station10"}
+
+Switch RainSensor 				(gGiardino)					{channel="opensprinkler:http:1:rainsensor"}
+
+// Grafici
+Number Graph_Weather_Temperature <chart>
+Number Graph_Weather_Pressure <chart>
+Number Graph_gStations <chart>
+
+Switch ESP_15084B						"OpenSprinkler Stato" 									(gNetwork) {channel="network:device:ESP_15084B:online"}
+Number ESP_15084B_Ping 					"Ping OpenSprinkler [%.1f ms]"  <returnpipe>			(gNetwork) {channel="network:device:ESP_15084B:time"}
+
+Switch EAP110_1							"Access Point locale piscina Stato" 					(gNetwork) {channel="network:device:EAP110_1:online"}
+Number EAP110_1_Ping					"Ping Access Point [%.1f ms]"  	<returnpipe>			(gNetwork) {channel="network:device:EAP110_1:time"}
+
+
+DateTime Data "Data [%1$tA, %1$tD.%1$tM.%1$tY - %1$tH:%1$tM:%1$tS]"	<clock>

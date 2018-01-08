@@ -1,0 +1,6 @@
+{
+    "template": "\n  <table class=\"table\">  <span style=\"color: orange;\">Precipitazioni previste DOMANI</span>   <tr>\n    <td>Pioggia:</td>\n    <td><strong><span>{{itemValue('Rain_F1')}} mm/h</span></strong></td>\n  </tr>\n  <tr>\n    <td>Neve:</td>\n    <td><strong><span>{{itemValue('Snow_F1')}} mm/h</span></strong></td>\n  </tr>  \n  <tr>\n    <td>Probabilità Precipitazioni:</td>\n    <td><strong><span>{{itemValue('Precip_Probability_F1')}} %</span></strong></td>\n  </tr>  \n  <tr>\n    <td>Precipitazioni:</td>\n    <td><strong><span>{{itemValue('Precip_Total_F1')}} mm</span></strong></td>\n  </tr> \n    \t</table>",
+    "name": "Precipitazioni_DOMANI",
+    "description": "Precipitazioni_DOMANI",
+    "author": "Massimiliano"
+}

@@ -1,0 +1,2 @@
+network:device:ESP_15084B [ hostname="192.168.1.153", port=0, retry=1, timeout=5000, refresh_interval=300000, use_system_ping="true", dhcplisten="true" ]
+network:device:EAP110_1 [ hostname="192.168.1.151", port=0, retry=1, timeout=5000, refresh_interval=300000, use_system_ping="true", dhcplisten="true" ] 

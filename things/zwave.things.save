@@ -1,0 +1,5 @@
+/*
+Bridge zwave:serial_zstick:controller [ port="/dev/ttyACM0" controller_softreset="false" controller_master="true" security_networkkey="00 11 22 33 44 55 66 77 88 99 AA BB CC DD EE FF"]
+Thing zwave:device:controller:node3 (zwave:serial_zstick:controller) [ zwave_nodeid="3" ]
+*/
+

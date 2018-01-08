@@ -1,0 +1,32 @@
+/*var Number counter = 0
+var Number lastCheck = 0
+var Number task = 0
+rule "Accendi luce automatica"
+when
+	Item MotionSensor_PTStudio_Volumetrico changed from OFF to ON
+then
+	counter = counter + 1
+	task = 1
+	if(MotionSensor_PTStudio_Luminosita.state < 15) {
+		sendCommand(WallPlug_PTStudio_Presa, ON)
+		logInfo("Luci", "Luce accesa")
+	}
+end
+
+rule "Spegni luce automatica"
+when
+	Time cron "0 * * * * ?"
+then
+	if((lastCheck == counter) &&
+		(task == 1)){
+		task = 0
+		counter = 0
+		lastCheck = -1
+		sendCommand(WallPlug_PTStudio_Presa, OFF)
+		//logInfo("Luci", "Non c'è nessuno spengo, la luce")
+	} 
+	else {
+		lastCheck = counter
+	}
+end
+*/

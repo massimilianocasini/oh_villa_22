@@ -1,0 +1,76 @@
+sitemap villa label="Benvenuto a Casa"
+{
+
+	Frame label="Meteo"
+			{
+			Text item=Station_Name label="Il tempo" icon=sun
+				{
+					Text item=Station_Name valuecolor=["orange"]
+					Text item=Station_Id valuecolor=["orange"]
+					Text item=Sunrise_Time label=Alba valuecolor=["orange"]
+					Text item=Sunset_Time label=Tramonto valuecolor=["orange"]
+					Text item=Station_Latitude valuecolor=["orange"]
+					Text item=Station_Longitude valuecolor=["orange"]
+					Text item=OpenMassa_TemperaturaCurr label="Temperatura attuale" valuecolor=[>25="orange",>15="green",<=5="blue"]
+					{
+						Switch item=Graph_Weather_Temperature label="Chart Period" mappings=[0="Hour", 1="8 Hours", 2="Day", 3="Week"]
+						Chart item=OpenMassa_TemperaturaCurr period=h refresh=300000 visibility=[Graph_Weather_Temperature==0, Graph_Weather_Temperature=="Uninitialized"]
+						Chart item=OpenMassa_TemperaturaCurr period=8h refresh=300000 visibility=[Graph_Weather_Temperature==1]
+						Chart item=OpenMassa_TemperaturaCurr period=D refresh=300000 visibility=[Graph_Weather_Temperature==2]
+						Chart item=OpenMassa_TemperaturaCurr period=W refresh=300000 visibility=[Graph_Weather_Temperature==3]
+						Chart item=OpenMassa_TemperaturaCurr period=M refresh=300000 visibility=[Graph_Weather_Temperature==3]
+						Chart item=OpenMassa_TemperaturaCurr period=2M refresh=300000 visibility=[Graph_Weather_Temperature==3]
+						Chart item=OpenMassa_TemperaturaCurr period=Y refresh=300000 visibility=[Graph_Weather_Temperature==3]
+					}
+						Text item=OpenMassa_TemperaturaMinF1  valuecolor=[>25="orange",>15="green",<=5="blue"]
+						Text item=OpenMassa_TemperaturaMaxF1  valuecolor=[>25="orange",>15="green",<=5="blue"]
+						Text item=Temp_Dewpoint label="Punto di rugiada oggi"
+						Text item=Temp_Dewpoint_F1 label="Punto di rugiada domani"
+						Text item=OpenMassa_Umidita
+						Text item=OpenMassa_Pressione
+					{
+						Switch item=Graph_Weather_Pressure label="Chart Period" mappings=[0="Day", 1="Week"]
+						Chart item=OpenMassa_Pressione period=D refresh=300000 visibility=[Graph_Weather_Pressure==0, Graph_Weather_Pressure=="Uninitialized"]
+						Chart item=OpenMassa_Pressione period=W refresh=300000 visibility=[Graph_Weather_Pressure==1]
+					}
+					Text item=OpenMassa_PressioneTrend
+				}
+			}
+
+	Frame label="Giardino"
+			{
+				Text item=RainSensor label="Rain [%s]"
+				Text item=gStations label="Water Stations"
+					{
+					Switch item=Stazione01_S label="Stazione 1"
+					Switch item=Stazione02_S label="Stazione 2"
+					Switch item=Stazione03_S label="Stazione 3"
+					Switch item=Stazione04_S label="Stazione 4"
+					Switch item=Stazione05_S label="Stazione 5"
+					Switch item=Stazione06_S label="Stazione 6"
+					Switch item=Stazione07_S label="Stazione 7"
+					Switch item=Stazione08_S label="Stazione 8"
+					Switch item=Stazione09_S label="Stazione 9"
+					Switch item=Stazione10_S label="Stazione 10"
+					}
+        Text item=gStations label="Water Stations Graph"
+        		{
+						Switch item=Graph_gStations label="Chart Period" mappings=[1="Day", 2="Week", 3="Month"]
+						Chart item=gStations period=D refresh=300000 visibility=[Graph_gStations==1, Graph_gStations=="Uninitialized"]
+						Chart item=gStations period=W refresh=300000 visibility=[Graph_gStations==2]
+						Chart item=gStations period=M refresh=300000 visibility=[Graph_gStations==3]
+
+					}
+
+			}
+
+	Frame label="Network"
+			{
+				Switch item=ESP_15084B	mappings=[ON="Online", OFF="Offline"]
+				Text item=ESP_15084B_Ping
+				Switch item=EAP110_1	mappings=[ON="Online", OFF="Offline"]
+				Text item=EAP110_1_Ping
+
+			}
+
+}

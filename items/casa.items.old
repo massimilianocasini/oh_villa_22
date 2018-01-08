@@ -1,0 +1,76 @@
+Group All
+Group Status
+Group gPT 									"Piano terra"																	(All)
+
+Group gPTStudio 							"Studio" 														<corridor> 		(All, gPT)
+
+Group gLuminosita							"Luminosità" 													<sun>	
+
+Group gSouliss								"Souliss"																		(All)
+
+
+Group gPTSoggiorno							"Soggiorno"														(All)
+
+Group:Number:AVG avgTemperatura 				"Temperatura media [%.1f °C]" 								<temperature>	(Status)
+Group:Switch:OR(OFF, ON) avgVolumetrico 		"Stato presenza [MAP(zwave_motion.map):%s]" 				<motion> 		(Status)
+Group:Switch:OR(OFF, ON) avgTamper 				"Stato tamper [MAP(zwave_tamper.map):%s]" 					<motion> 		(Status)
+Group:Switch:OR(ON, OFF) avgPresa 				"Stato prese" 												<heatingoutlet> 	(Status)
+Group:Number:AVG avgLuminosita 					"Luminosità media [%.2f Lux]"  								<sun>			(Status)
+Group:Number:AVG avgBatteria 					"Stato batterie media [%d %%]" 								<battery>		(Status)
+Group:Number:SUM sumPotenza						"Potenza istantanea totale [%.2f W]" 						<heating>			(Status)
+Group:Number:SUM sumEnergia						"Consumo di energia totale [%.2f KWh]" 						<heating>			(Status)
+
+
+//Items zwave
+Number MotionSensor_PTStudio_Temperatura			"Temperatura [%.1f °C]"										<temperature>		(avgTemperatura, gPTStudio)
+Switch MotionSensor_PTStudio_Volumetrico 			"IR Studio [MAP(zwave_motion.map):%s]" 						<motion> 			(avgVolumetrico, gPTStudio) 
+Switch MotionSensor_PTStudio_Tamper					"Stato tamper [MAP(zwave_tamper.map):%s]" 					<lock> 				(gPTStudio)
+Number MotionSensor_PTStudio_Luminosita 			"Luminosità Studio [%.2f Lux]" 								<sun> 				(avgLuminosita, gLuminosita, gPTStudio)
+Number MotionSensor_PTStudio_Batteria 				"Stato batteria [%d %%]"									<battery> 			(avgBatteria, gPTStudio)
+
+Switch WallPlug_PTStudio_Presa 						"Wall Plug presa" 											<poweroutlet>		(avgPresa, gPTStudio)
+Number WallPlug_PTStudio_Potenza 					"Wall Plug potenza istantanea [%.1f W]" 					<heating>			(sumPotenza, gPTStudio)
+Number WallPlug_PTStudio_Energia 					"Wall Plug Totale energia [%.2f KWh]" 						<heating>			(sumEnergia, gPTStudio)	
+
+
+
+//Grafici
+
+Number Graph_Weather_Temperature <chart>
+Number Graph_Weather_Pressure <chart>
+
+Number Graph_MotionSensor_PTStudio_Temperatura <chart>
+Number Graph_MotionSensor_PTStudio_Luminosita <chart>
+
+Number Graph_WallPlug_PTStudio_Potenza <chart>
+Number Graph_WallPlug_PTStudio_Energia <chart>
+
+
+DateTime Data "Data [%1$tA, %1$tD.%1$tM.%1$tY - %1$tH:%1$tM:%1$tS]"	<clock>
+
+		
+String System_Temperature_CPU "Temperature CPU [%s °C]" <temperature> 		(System_Temperature_Chart) 	{ exec="<[cat /sys/class/thermal/thermal_zone0/temp:60000:JS(milli.js)]" }
+// String System_Temperature_GPU "Temperature GPU [%s]" 	<temperature> 		(System_Temperature_Chart)  { exec="<[/opt/vc/bin/vcgencmd measure_temp:60000:REGEX(temp=(.*?)'C)]" }
+
+
+//Weather Information 			
+Number Weather_Temperature 		"Temperatura esterna attuale [%.1f °C]"	<temperature> 	(Weather)	
+Number Weather_Humidity 		"Umidità esterna attuale [%.1f %%]"		<temperature> 	(Weather)
+Number Weather_Pressure			"Pressione esterna attuale [%.1f mBar]" <temperature> 	(Weather)	
+Number Weather_Chart_Period		"Chart Period" <chart>
+
+//Souliss
+Switch TestSouliss0 "SoulissInt0" <light>	(gPTStudio, gSouliss) {souliss="T11:0:0", autoupdate="true"}
+Switch TestSouliss1 "SoulissInt1" <light>	(gPTStudio, gSouliss) {souliss="T11:0:1", autoupdate="true"}
+Switch TestSouliss2 "SoulissInt2" <light>	(gPTStudio, gSouliss) {souliss="T11:0:2", autoupdate="true"}
+Switch TestSouliss3 "SoulissInt3" <light>	(gPTStudio, gSouliss) {souliss="T11:0:3", autoupdate="true"}
+Number HEALTHNodo0 	"Health Node 0 [MAP(healt.map):%1d]" 	<clock> (gPTStudio, gSouliss) {souliss="D98:0:998"}
+String TIMESTAMP_Nodo0 "Update Node 0 [%1$td.%1$tm.%1$tY %1$tk:%1$tM:%1$tS]" <clock> (gPTStudio, gSouliss) {souliss="D99:0:999"}
+
+
+//IP Device
+Switch ProdinoSouliss				 "Device Prodino Status" (gSouliss)
+Number ProdinoSoulissPing 			 "Device Prodino Ping Time [%.1f ms]" <returnpipe> (gPTStudio,gSouliss) 
+Switch MySky						"MySky Stato" 					(gPTSoggiorno)
+Switch MySkyChart					"MySky Stato Grafico"		(gPTSoggiorno)
+Number MySkyPing 					"Ping MySky [%1f ms]"  		<returnpipe>		(gPTSoggiorno)
